@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Montres</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            text-align: center;
+            position: relative;
+        }
+        nav {
+            background-color: #2c3e50;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #ddd;
+        }
+        .logo {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            z-index: 10;
+        }
+        .logo img {
+            max-height: 100px;
+            width: auto;
+        }
+        h1 {
+            color: #333;
+            margin: 20px 0;
+        }
+        #accueil h1 {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        .filtres {
+            margin-bottom: 20px;
+        }
+        select, input {
+            padding: 10px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            margin: 0 10px;
+            width: 200px;
+        }
+        #montreListe {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .montre {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            text-align: center;
+            display: none;
+        }
+        .montre.active {
+            display: block;
+        }
+        .montre img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 5px;
+        }
+        h2 {
+            color: #2c3e50;
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+        p {
+            color: #666;
+            margin: 5px 0;
+        }
+        .acheter-btn {
+            background-color: #2c3e50;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+        .acheter-btn:hover {
+            background-color: #34495e;
+        }
+        .section {
+            display: none;
+            margin-top: 20px;
+        }
+        .section.active {
+            display: block;
+        }
+        .contact {
+            margin-top: 30px;
+            font-size: 1.2em;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+        .pub {
+            max-width: 200px;
+            background-color: #fff;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            z-index: 20;
+        }
+        .pub video {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        .pub p {
+            font-size: 0.8em;
+            color: #888;
+            margin: 2px 0;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                top: 5px;
+                right: 5px;
+            }
+            .logo img {
+                max-height: 60px;
+            }
+            #accueil h1 {
+                font-size: 1.8em;
+            }
+            .filtres select, .filtres input {
+                width: 100%;
+                margin: 5px 0;
+            }
+            #montreListe {
+                grid-template-columns: 1fr;
+            }
+            .montre img {
+                max-width: 80%;
+            }
+            .pub {
+                max-width: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <img src="logoSangFof.jpeg" alt="Logo">
+    </div>
+
+    <nav>
+        <a href="#accueil" onclick="showSection('accueil')">Accueil</a>
+        <a href="#apropos" onclick="showSection('apropos')">À propos</a>
+        <a href="#contact" onclick="showSection('contact')">Contact</a>
+    </nav>
+
+    <div class="pub">
+        <video id="pubVideo" muted playsinline>
+            <source src="video1.mp4" type="video/mp4">
+            Désolé, la vidéo n’a pas pu être chargée. Vérifiez le fichier video1.mp4.
+        </video>
+        <p>Publicité</p>
+    </div>
+
+    <div id="accueil" class="section active">
+        <h1>Ici on soigne les poignets</h1>
+        <div class="filtres">
+            <select id="marqueSelect" onchange="filtrerMontres()">
+                <option value="">Toutes les marques</option>
+                <option value="Rolex">Rolex</option>
+                <option value="Casio">Casio</option>
+                <option value="Nibosi">Nibosi</option>
+                <option value="Megir">Megir</option>
+                <option value="Montblanc">Montblanc</option>
+                <option value="DW">DW</option>
+                <option value="Chenxi">Chenxi</option>
+                <option value="Edifice">Edifice</option>
+                <option value="Hilfiger">Hilfiger</option>
+                <option value="Mini Focus">Mini Focus</option>
+                <option value="Curren">Curren</option>
+                <option value="Bracelet">Bracelet</option>
+                <option value="Chaine">Chaine</option>
+            </select>
+            <input type="number" id="prixInput" placeholder="Prix min (FCFA)" oninput="filtrerMontres()">
+            <input type="text" id="marqueInput" placeholder="Rechercher par marque" oninput="filtrerMontres()">
+        </div>
+        
+        <div id="montreListe"></div>
+    </div>
+
+    <div id="apropos" class="section">
+        <h1>À propos</h1>
+        <p>Je suis passionné par les montres depuis 10 ans et je partage ici ma collection !</p>
+        <p>Nous sommes situés à Adjamé Black Market</p>
+    </div>
+
+    <div id="contact" class="section">
+        <h1>Contact</h1>
+        <p class="contact">Contact : 0778901319</p>
+        <p class="contact">Contact : 0757700990</p>
+    </div>
+
+    <script>
+        const montres = [
+            { id: "Montre1", titre: "Casio G-Shock", marque: "Casio", prix: 7000, desc: "Une montre robuste et résistante aux chocs, parfaite pour les aventuriers. État : Neuf.", img: "Montre1.jpeg" },
+            { id: "Montre2", titre: "Casio Retro", marque: "Casio", prix: 7000, desc: "Un design numérique classique pour un look vintage. État : Neuf.", img: "Montre2.jpeg" },
+            { id: "Montre3", titre: "Casio Sport", marque: "Casio", prix: 7000, desc: "Idéale pour le sport avec son chronomètre intégré. État : Neuf.", img: "Montre3.jpeg" },
+            { id: "Montre4", titre: "Casio Elegance", marque: "Casio", prix: 7000, desc: "Un style épuré pour une touche d’élégance quotidienne. État : Neuf.", img: "Montre4.jpeg" },
+            { id: "Montre5", titre: "Casio Diver", marque: "Casio", prix: 7000, desc: "Parfaite pour la plongée avec son étanchéité renforcée. État : Neuf.", img: "Montre5.jpeg" },
+            { id: "Montre6", titre: "Casio Solar", marque: "Casio", prix: 7000, desc: "Alimentée par l’énergie solaire, écologique et pratique. État : Neuf.", img: "Montre6.jpeg" },
+            { id: "Montre7", titre: "Casio Classic", marque: "Casio", prix: 7000, desc: "Un modèle intemporel pour toutes les occasions. État : Neuf.", img: "Montre7.jpeg" },
+            { id: "Montre8", titre: "Casio Chrono", marque: "Casio", prix: 7000, desc: "Un chronographe précis pour les amateurs de performance. État : Neuf.", img: "Montre8.jpeg" },
+            { id: "Montre9", titre: "Casio Minimal", marque: "Casio", prix: 7000, desc: "Simplicité et modernité dans un design épuré. État : Neuf.", img: "Montre9.jpeg" },
+            { id: "Montre10", titre: "Casio Steel", marque: "Casio", prix: 7000, desc: "Boîtier en acier pour une durabilité accrue. État : Neuf.", img: "Montre10.jpeg" },
+            { id: "Montre11", titre: "Casio Neon", marque: "Casio", prix: 7000, desc: "Un affichage lumineux pour une lisibilité optimale. État : Neuf.", img: "Montre11.jpeg" },
+            { id: "Montre12", titre: "Casio Urban", marque: "Casio", prix: 7000, desc: "Un look urbain et fonctionnel pour la ville. État : Neuf.", img: "Montre12.jpeg" },
+            { id: "Nibosi1", titre: "Nibosi Bold", marque: "Nibosi", prix: 13000, desc: "Un design audacieux pour un style affirmé. État : Neuf.", img: "Nibosi1.jpeg" },
+            { id: "Nibosi2", titre: "Nibosi Sleek", marque: "Nibosi", prix: 13000, desc: "Élégance moderne avec une finition soignée. État : Neuf.", img: "Nibosi2.jpeg" },
+            { id: "Nibosi3", titre: "Nibosi Chrono", marque: "Nibosi", prix: 17000, desc: "Un chronographe sophistiqué pour les passionnés. État : Neuf.", img: "Nibosi3.jpeg" },
+            { id: "Nibosi4", titre: "Nibosi Gold", marque: "Nibosi", prix: 13000, desc: "Une touche dorée pour un look luxueux. État : Neuf.", img: "Nibosi4.jpeg" },
+            { id: "Nibosi5", titre: "Nibosi Black", marque: "Nibosi", prix: 13000, desc: "Noir intense pour une allure mystérieuse. État : Neuf.", img: "Nibosi5.jpeg" },
+            { id: "Nibosi6", titre: "Nibosi Sport", marque: "Nibosi", prix: 13000, desc: "Conçue pour les activités avec style. État : Neuf.", img: "Nibosi6.jpeg" },
+            { id: "Nibosi7", titre: "Nibosi Classic", marque: "Nibosi", prix: 13000, desc: "Un classique revisité avec une touche moderne. État : Neuf.", img: "Nibosi7.jpeg" },
+            { id: "Nibosi8", titre: "Nibosi Lux", marque: "Nibosi", prix: 13000, desc: "Un design raffiné pour les grandes occasions. État : Neuf.", img: "Nibosi8.jpeg" },
+            { id: "Mini focus", titre: "Mini Focus Edge", marque: "Mini Focus", prix: 17000, desc: "Un design tranchant pour un style unique. État : Neuf.", img: "Mini focus1.jpeg" },
+            { id: "Mini focus2", titre: "Mini Focus Glow", marque: "Mini Focus", prix: 17000, desc: "Aiguilles lumineuses pour une lisibilité parfaite. État : Neuf.", img: "Mini focus2.jpeg" },
+            { id: "Mini focus3", titre: "Mini Focus Elite", marque: "Mini Focus", prix: 17000, desc: "Une montre sophistiquée pour les connaisseurs. État : Neuf.", img: "Mini focus3.jpeg" },
+            { id: "Rolex1", titre: "Rolex Explorer", marque: "Rolex", prix: 15000, desc: "Une montre robuste pour les aventures extrêmes. État : Neuf.", img: "Rolex1.jpeg" },
+            { id: "Rolex2", titre: "Rolex Datejust", marque: "Rolex", prix: 15000, desc: "Élégance intemporelle avec date intégrée. État : Neuf.", img: "Rolex2.jpeg" },
+            { id: "Rolex3", titre: "Rolex Submariner", marque: "Rolex", prix: 15000, desc: "Parfaite pour la plongée avec un style luxueux. État : Neuf.", img: "Rolex3.jpeg" },
+            { id: "Curren1", titre: "Curren Classic", marque: "Curren", prix: 15000, desc: "Un design intemporel pour toutes les occasions. État : Neuf.", img: "Curren1.jpeg" },
+            { id: "Curren2", titre: "Curren Steel", marque: "Curren", prix: 15000, desc: "Boîtier en acier pour une durabilité élégante. État : Neuf.", img: "Curren2.jpeg" },
+            { id: "Curren3", titre: "Curren Chrono", marque: "Curren", prix: 15000, desc: "Un chronographe précis et stylé. État : Neuf.", img: "Curren3.jpeg" },
+            { id: "Curren4", titre: "Curren Gold", marque: "Curren", prix: 15000, desc: "Finition dorée pour une touche de luxe. État : Neuf.", img: "Curren4.jpeg" },
+            { id: "Curren5", titre: "Curren Black", marque: "Curren", prix: 15000, desc: "Noir profond pour une allure sophistiquée. État : Neuf.", img: "Curren5.jpeg" },
+            { id: "Curren6", titre: "Curren Sport", marque: "Curren", prix: 15000, desc: "Idéale pour un mode de vie actif. État : Neuf.", img: "Curren6.jpeg" },
+            { id: "Curren7", titre: "Curren Minimal", marque: "Curren", prix: 15000, desc: "Simplicité et élégance dans un design épuré. État : Neuf.", img: "Curren7.jpeg" },
+            { id: "Curren8", titre: "Curren Lux", marque: "Curren", prix: 15000, desc: "Un style raffiné pour les grandes occasions. État : Neuf.", img: "Curren8.jpeg" },
+            { id: "Curren9", titre: "Curren Urban", marque: "Curren", prix: 15000, desc: "Un look moderne pour la ville. État : Neuf.", img: "Curren9.jpeg" },
+            { id: "Curren10", titre: "Curren Vintage", marque: "Curren", prix: 15000, desc: "Un hommage au style rétro. État : Neuf.", img: "Curren10.jpeg" },
+            { id: "Curren11", titre: "Curren Bold", marque: "Curren", prix: 15000, desc: "Un design audacieux qui attire l’attention. État : Neuf.", img: "Curren11.jpeg" },
+            { id: "Curren12", titre: "Curren Sleek", marque: "Curren", prix: 15000, desc: "Élégance fine et discrète. État : Neuf.", img: "Curren12.jpeg" },
+            { id: "Curren13", titre: "Curren Titan", marque: "Curren", prix: 15000, desc: "Robuste et imposante pour un style affirmé. État : Neuf.", img: "Curren13.jpeg" },
+            { id: "Curren14", titre: "Curren Blue", marque: "Curren", prix: 15000, desc: "Cadran bleu pour une touche de couleur. État : Neuf.", img: "Curren14.jpeg" },
+            { id: "Curren15", titre: "Curren Elite", marque: "Curren", prix: 15000, desc: "Une montre pour les amateurs de finesse. État : Neuf.", img: "Curren15.jpeg" },
+            { id: "Curren16", titre: "Curren Night", marque: "Curren", prix: 15000, desc: "Parfaite pour les soirées avec son design sombre. État : Neuf.", img: "Curren16.jpeg" },
+            { id: "Curren17", titre: "Curren Active", marque: "Curren", prix: 15000, desc: "Conçue pour un style de vie dynamique. État : Neuf.", img: "Curren17.jpeg" },
+            { id: "Curren18", titre: "Curren Royal", marque: "Curren", prix: 15000, desc: "Un look royal pour une élégance suprême. État : Neuf.", img: "Curren18.jpeg" },
+            { id: "Megir1", titre: "Megir Chrono", marque: "Megir", prix: 17000, desc: "Un chronographe sportif au design audacieux. État : Neuf.", img: "megir1.jpg" },
+            { id: "DW1", titre: "DW Classic", marque: "DW", prix: 12000, desc: "Simplicité minimaliste pour un style chic. État : Neuf.", img: "DW1.jpeg" },
+            { id: "Chenxi7", titre: "Chenxi Gold Classic", marque: "Chenxi", prix: 22000, desc: "Une montre dorée classique pour un éclat discret. État : Neuf.", img: "Chenxi7.jpeg" },
+            { id: "Chenxi1", titre: "Chenxi Gold Lux", marque: "Chenxi", prix: 22000, desc: "Un design doré luxueux pour briller en soirée. État : Neuf.", img: "Chenxi1.jpeg" },
+            { id: "Chenxi2", titre: "Chenxi Gold Sport", marque: "Chenxi", prix: 22000, desc: "Finition dorée avec une touche sportive. État : Neuf.", img: "Chenxi2.jpeg" },
+            { id: "Chenxi3", titre: "Chenxi Gold Bold", marque: "Chenxi", prix: 22000, desc: "Un style doré audacieux qui attire les regards. État : Neuf.", img: "Chenxi3.jpeg" },
+            { id: "Chenxi4", titre: "Chenxi Gold Sleek", marque: "Chenxi", prix: 22000, desc: "Élégance dorée dans un design fin. État : Neuf.", img: "Chenxi4.jpeg" },
+            { id: "Chenxi5", titre: "Chenxi Gold Modern", marque: "Chenxi", prix: 22000, desc: "Un look doré moderne et tendance. État : Neuf.", img: "Chenxi5.jpeg" },
+            { id: "Hilfiger1", titre: "Hilfiger Casual", marque: "Hilfiger", prix: 20000, desc: "Un style décontracté inspiré de la mode américaine. État : Neuf.", img: "hilfiger1.jpeg" },
+            { id: "Edifice1", titre: "Edifice Racer", marque: "Edifice", prix: 13000, desc: "Une montre dynamique pour les amateurs de vitesse. État : Neuf.", img: "Edifice1.jpeg" },
+            { id: "Edifice2", titre: "Edifice Pro", marque: "Edifice", prix: 13000, desc: "Technologie avancée dans un design sportif. État : Neuf.", img: "Edifice2.jpeg" },
+            { id: "Montblanc1", titre: "Montblanc Star", marque: "Montblanc", prix: 20000, desc: "Une étoile de luxe au poignet. État : Neuf.", img: "Montblanc1.jpeg" },
+            { id: "Montblanc2", titre: "Montblanc Heritage", marque: "Montblanc", prix: 20000, desc: "Un hommage à l’artisanat traditionnel. État : Neuf.", img: "Montblanc2.jpeg" },
+            { id: "Bracelet1", titre: "Bracelet Elegance", marque: "Bracelet", prix: 10000, desc: "Un bracelet raffiné pour un style unique. État : Neuf.", img: "Bracelet1.jpeg" },
+            { id: "Bracelet2", titre: "Bracelet Modern", marque: "Bracelet", prix: 10000, desc: "Design contemporain pour un look tendance. État : Neuf.", img: "Bracelet2.jpeg" },
+            { id: "Bracelet3", titre: "Bracelet Chic", marque: "Bracelet", prix: 10000, desc: "Élégance discrète pour toutes les occasions. État : Neuf.", img: "Bracelet3.jpeg" },
+            { id: "Bracelet4", titre: "Bracelet Bold", marque: "Bracelet", prix: 15000, desc: "Un style affirmé avec ce bracelet imposant. État : Neuf.", img: "Bracelet4.jpeg" },
+            { id: "Chaine1", titre: "Chaine Classic", marque: "Chaine", prix: 10000, desc: "Une chaîne intemporelle pour un look élégant. État : Neuf.", img: "Chaine1.jpeg" },
+            { id: "Chaine2", titre: "Chaine Heavy", marque: "Chaine", prix: 10000, desc: "Robuste et imposante pour un style audacieux. État : Neuf.", img: "Chaine2.jpeg" },
+            { id: "Chaine3", titre: "Chaine Sleek", marque: "Chaine", prix: 10000, desc: "Finesse et élégance dans une chaîne légère. État : Neuf.", img: "Chaine3.jpeg" },
+            { id: "Chaine4", titre: "Chaine Lux", marque: "Chaine", prix: 10000, desc: "Un design luxueux pour les grandes occasions. État : Neuf.", img: "Chaine4.jpeg" },
+            { id: "Chaine5", titre: "Chaine Urban", marque: "Chaine", prix: 10000, desc: "Un look moderne pour la vie en ville. État : Neuf.", img: "Chaine5.jpeg" },
+            { id: "Chaine6", titre: "Chaine Gold", marque: "Chaine", prix: 10000, desc: "Finition dorée pour une touche de prestige. État : Neuf.", img: "Chaine6.jpeg" },
+            { id: "Chaine7", titre: "Chaine Minimal", marque: "Chaine", prix: 10000, desc: "Simplicité élégante dans un design épuré. État : Neuf.", img: "Chaine7.jpeg" },
+            { id: "Chaine8", titre: "Chaine Royal", marque: "Chaine", prix: 10000, desc: "Un style majestueux pour briller. État : Neuf.", img: "Chaine8.jpeg" },
+        ];
+
+        const liste = document.getElementById("montreListe");
+        montres.forEach(montre => {
+            const div = document.createElement("div");
+            div.id = montre.id;
+            div.className = "montre";
+            div.innerHTML = `
+                <img src="${montre.img}" alt="${montre.titre}">
+                <h2>${montre.titre}</h2>
+                <p>${montre.desc} Prix : ${montre.prix} FCFA</p>
+                <button class="acheter-btn" onclick="window.open('https://wa.me/2250778901319?text=Je%20veux%20acheter%20${montre.titre}%20-%20${montre.prix}%20FCFA', '_blank')">Contacter pour acheter</button>
+            `;
+            liste.appendChild(div);
+        });
+
+        function filtrerMontres() {
+            const marqueSelect = document.getElementById("marqueSelect").value;
+            const prixMin = parseFloat(document.getElementById("prixInput").value) || 0;
+            const marqueRecherche = document.getElementById("marqueInput").value.toLowerCase();
+
+            montres.forEach(montre => {
+                const div = document.getElementById(montre.id);
+                const matchMarqueSelect = !marqueSelect || montre.marque === marqueSelect;
+                const matchPrix = montre.prix >= prixMin;
+                const matchMarqueInput = marqueRecherche === "" || 
+                                        montre.marque.toLowerCase().includes(marqueRecherche) || 
+                                        montre.titre.toLowerCase().includes(marqueRecherche);
+
+                if (matchMarqueSelect && matchPrix && matchMarqueInput) {
+                    div.classList.add("active");
+                } else {
+                    div.classList.remove("active");
+                }
+            });
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll(".section").forEach(section => {
+                section.classList.remove("active");
+            });
+            document.getElementById(sectionId).classList.add("active");
+            if (sectionId === "accueil") filtrerMontres();
+        }
+
+        const video = document.getElementById("pubVideo");
+        video.addEventListener("ended", function() {
+            video.currentTime = 0;
+            video.play();
+        });
+
+        window.addEventListener("load", function() {
+            video.play().catch(error => {
+                console.log("Autoplay bloqué :", error);
+            });
+            filtrerMontres();
+        });
+    </script>
+</body>
+</html>
