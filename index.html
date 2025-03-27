@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mes Montres</title>
+    <title>Montres Pas Chères Abidjan - Fofsang Montre 2025</title>
+    <meta name="description" content="Montres neuves et stylées à Adjamé Black Market, dès 7000 FCFA. Commandez via WhatsApp !">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -131,6 +132,41 @@
             color: #888;
             margin: 2px 0;
         }
+        .cta {
+            font-size: 1.2em;
+            color: #2c3e50;
+            margin: 20px 0;
+            font-weight: bold;
+        }
+        /* Style du loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+        .loader::after {
+            content: '';
+            width: 40px;
+            height: 40px;
+            border: 5px solid #2c3e50;
+            border-top: 5px solid transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .loaded .loader {
+            display: none;
+        }
 
         @media (max-width: 768px) {
             .logo {
@@ -160,8 +196,10 @@
     </style>
 </head>
 <body>
+    <div class="loader"></div>
+
     <div class="logo">
-        <img src="logoSangFof.jpeg" alt="Logo">
+        <img src="logoSangFof.jpeg" alt="Logo Fofsang Montres" loading="lazy">
     </div>
 
     <nav>
@@ -171,7 +209,7 @@
     </nav>
 
     <div class="pub">
-        <video id="pubVideo" muted playsinline>
+        <video id="pubVideo" muted playsinline loading="lazy">
             <source src="video1.mp4" type="video/mp4">
             Désolé, la vidéo n’a pas pu être chargée. Vérifiez le fichier video1.mp4.
         </video>
@@ -179,7 +217,9 @@
     </div>
 
     <div id="accueil" class="section active">
-        <h1>Ici on soigne les poignets</h1>
+        <h1>Montres Pas Chères à Adjamé - Fofsang Montre 2025</h1>
+        <p>Découvrez nos montres neuves et stylées en Côte d'Ivoire !</p>
+        <p class="cta">Choisissez votre montre et commandez via WhatsApp dès maintenant !</p>
         <div class="filtres">
             <select id="marqueSelect" onchange="filtrerMontres()">
                 <option value="">Toutes les marques</option>
@@ -206,8 +246,8 @@
 
     <div id="apropos" class="section">
         <h1>À propos</h1>
-        <p>Je suis passionné par les montres depuis 10 ans et je partage ici ma collection !</p>
-        <p>Nous sommes situés à Adjamé Black Market</p>
+        <p>Je suis passionné par les montres pas chères depuis 10 ans et je partage ici ma collection unique !</p>
+        <p>Retrouvez-nous à Adjamé Black Market, le meilleur endroit pour des montres stylées en Côte d'Ivoire.</p>
     </div>
 
     <div id="contact" class="section">
@@ -295,7 +335,7 @@
             div.id = montre.id;
             div.className = "montre";
             div.innerHTML = `
-                <img src="${montre.img}" alt="${montre.titre}">
+                <img src="${montre.img}" alt="${montre.titre} - Montre pas chère" loading="lazy">
                 <h2>${montre.titre}</h2>
                 <p>${montre.desc} Prix : ${montre.prix} FCFA</p>
                 <button class="acheter-btn" onclick="window.open('https://wa.me/2250778901319?text=Je%20veux%20acheter%20${montre.titre}%20-%20${montre.prix}%20FCFA', '_blank')">Contacter pour acheter</button>
@@ -343,6 +383,8 @@
                 console.log("Autoplay bloqué :", error);
             });
             filtrerMontres();
+            // Retirer le loader une fois la page chargée
+            document.body.classList.add("loaded");
         });
     </script>
 </body>
