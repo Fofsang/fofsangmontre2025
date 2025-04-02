@@ -7,193 +7,7 @@
     <meta name="description" content="Montres neuves et stylées à Adjamé Black Market, dès 7000 FCFA. Commandez via WhatsApp !">
     <meta name="google-site-verification" content="G59bSIgT4eHXkH1Lr31OdcGCdBx0_Ndx0NFc4bk9UaA" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            text-align: center;
-            position: relative;
-        }
-        nav {
-            background-color: #2c3e50;
-            padding: 10px;
-            text-align: center;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        nav a:hover {
-            color: #ddd;
-        }
-        .logo {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            z-index: 10;
-        }
-        .logo img {
-            max-height: 100px;
-            width: auto;
-        }
-        h1 {
-            color: #333;
-            margin: 20px 0;
-        }
-        #accueil h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            color: #2c3e50;
-        }
-        .filtres {
-            margin-bottom: 20px;
-        }
-        select, input {
-            padding: 10px;
-            font-size: 1.1em;
-            border-radius: 5px;
-            margin: 0 10px;
-            width: 200px;
-        }
-        #montreListe {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            padding: 20px;
-        }
-        .montre {
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            text-align: center;
-            display: none;
-        }
-        .montre.active {
-            display: block;
-        }
-        .montre img {
-            max-width: 50%;
-            height: auto;
-            border-radius: 5px;
-        }
-        h2 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            margin: 10px 0;
-        }
-        p {
-            color: #666;
-            margin: 5px 0;
-        }
-        .acheter-btn {
-            background-color: #2c3e50;
-            color: white;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-        .acheter-btn:hover {
-            background-color: #34495e;
-        }
-        .section {
-            display: none;
-            margin-top: 20px;
-        }
-        .section.active {
-            display: block;
-        }
-        .contact {
-            margin-top: 30px;
-            font-size: 1.2em;
-            color: #2c3e50;
-            font-weight: bold;
-        }
-        .pub {
-            max-width: 200px;
-            background-color: #fff;
-            padding: 5px;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin: 10px auto;
-            z-index: 20;
-        }
-        .pub video {
-            width: 100%;
-            height: auto;
-            border-radius: 5px;
-        }
-        .pub p {
-            font-size: 0.8em;
-            color: #888;
-            margin: 2px 0;
-        }
-        .cta {
-            font-size: 1.2em;
-            color: #2c3e50;
-            margin: 20px 0;
-            font-weight: bold;
-        }
-        /* Style du loader */
-        .loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-        .loader::after {
-            content: '';
-            width: 40px;
-            height: 40px;
-            border: 5px solid #2c3e50;
-            border-top: 5px solid transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .loaded .loader {
-            display: none;
-        }
-
-        @media (max-width: 768px) {
-            .logo {
-                top: 5px;
-                right: 5px;
-            }
-            .logo img {
-                max-height: 50px;
-            }
-            #accueil h1 {
-                font-size: 1.8em;
-            }
-            .filtres select, .filtres input {
-                width: 100%;
-                margin: 5px 0;
-            }
-            #montreListe {
-                grid-template-columns: 1fr;
-            }
-            .montre img {
-                max-width: 80%;
-            }
-            .pub {
-                max-width: 150px;
-            }
-        }
+        body{font-family:Arial,sans-serif;margin:0;padding:20px;background-color:#f4f4f4;text-align:center;position:relative}nav{background-color:#2c3e50;padding:10px;text-align:center}nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:700}nav a:hover{color:#ddd}.logo{position:absolute;top:10px;right:10px;z-index:10}.logo img{max-height:100px;width:auto}h1{color:#333;margin:20px 0}#accueil h1{font-size:2.5em;font-weight:700;color:#2c3e50}.filtres{margin-bottom:20px}select,input{padding:10px;font-size:1.1em;border-radius:5px;margin:0 10px;width:200px}#montreListe{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:20px}.montre{background-color:#fff;border-radius:10px;box-shadow:0 2px 4px rgba(0,0,0,.05);padding:15px;text-align:center;display:none}.montre.active,.montre:nth-child(-n+10){display:block}.montre img{max-width:50%;height:auto;border-radius:5px}h2{color:#2c3e50;font-size:1.5em;margin:10px 0}p{color:#666;margin:5px 0}.acheter-btn{background-color:#2c3e50;color:#fff;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;margin-top:10px}.acheter-btn:hover{background-color:#34495e}.section{display:none;margin-top:20px}.section.active{display:block}.contact{margin-top:30px;font-size:1.2em;color:#2c3e50;font-weight:700}.pub{max-width:200px;background-color:#fff;padding:5px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,.05);margin:10px auto;z-index:20}.pub video{width:100%;height:auto;border-radius:5px}.pub p{font-size:.8em;color:#888;margin:2px 0}.cta{font-size:1.2em;color:#2c3e50;margin:20px 0;font-weight:700}.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.8);display:flex;justify-content:center;align-items:center;z-index:1000}.loader::after{content:'';width:40px;height:40px;border:5px solid #2c3e50;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.loaded .loader{display:none}@media (max-width:768px){.logo{top:5px;right:5px}.logo img{max-height:50px}#accueil h1{font-size:1.8em}.filtres select,.filtres input{width:100%;margin:5px 0}#montreListe{grid-template-columns:1fr}.montre img{max-width:80%}.pub{max-width:150px}}
     </style>
 </head>
 <body>
@@ -214,15 +28,16 @@
             <source src="video1.mp4" type="video/mp4">
             Désolé, la vidéo n’a pas pu être chargée. Vérifiez le fichier video1.mp4.
         </video>
+        <button id="playPub">Voir la pub</button>
         <p>Publicité</p>
     </div>
 
     <div id="accueil" class="section active">
-        <h1>Montres Pas Chères à Adjamé - Sangfof Montre </h1>
+        <h1>Montres Pas Chères à Adjamé - Sangfof Montre</h1>
         <p>Découvrez nos montres neuves et stylées en Côte d'Ivoire !</p>
         <p class="cta">Choisissez votre montre et commandez via WhatsApp dès maintenant !</p>
         <div class="filtres">
-            <select id="marqueSelect" onchange="filtrerMontres()">
+            <select id="marqueSelect">
                 <option value="">Toutes les marques</option>
                 <option value="Rolex">Rolex</option>
                 <option value="Casio">Casio</option>
@@ -239,8 +54,8 @@
                 <option value="Bracelet">Bracelet</option>
                 <option value="Chaine">Chaine</option>
             </select>
-            <input type="number" id="prixInput" placeholder="Prix min (FCFA)" oninput="filtrerMontres()">
-            <input type="text" id="marqueInput" placeholder="Rechercher par marque" oninput="filtrerMontres()">
+            <input type="number" id="prixInput" placeholder="Prix min (FCFA)">
+            <input type="text" id="marqueInput" placeholder="Rechercher par marque">
         </div>
         
         <div id="montreListe"></div>
@@ -249,9 +64,7 @@
     <div id="apropos" class="section">
         <h1>À propos</h1>
         <p>Je suis passionné par les montres pas chères depuis 10 ans et je partage ici ma collection unique !</p>
-        <p>Retrouvez-nous à Adjamé Black Market, le meilleur endroit pour des montres stylées en Côte d'Ivoire. Achetez des montres pas chères à Abidjan chez Fofsang Montre 2025, disponibles dès 7000 FCFA
-
-</p>
+        <p>Retrouvez-nous à Adjamé Black Market, le meilleur endroit pour des montres stylées en Côte d'Ivoire. Achetez des montres pas chères à Abidjan chez Fofsang Montre 2025, disponibles dès 7000 FCFA</p>
     </div>
 
     <div id="contact" class="section">
@@ -285,8 +98,8 @@
             { id: "Mini focus", titre: "Mini Focus Edge", marque: "Mini Focus", prix: 17000, desc: "Un design tranchant pour un style unique. État : Neuf.", img: "Mini focus1.jpeg" },
             { id: "Mini focus2", titre: "Mini Focus Glow", marque: "Mini Focus", prix: 17000, desc: "Aiguilles lumineuses pour une lisibilité parfaite. État : Neuf.", img: "Mini focus2.jpeg" },
             { id: "Mini focus3", titre: "Mini Focus Elite", marque: "Mini Focus", prix: 17000, desc: "Une montre sophistiquée pour les connaisseurs. État : Neuf.", img: "Mini focus3.jpeg" },
-            { id: "NaviForce1", titre: "NaviForce Elite", marque: " NaviForce", prix: 25000, desc: "Une montre sophistiquée pour les connaisseurs. État : Neuf.", img: "NaviForce1.jpeg"
-         
+            
+            { id: "NaviForce12", titre: "NaviForce Elite", marque: "NaviForce", prix: 25000, desc: "Une montre sophistiquée pour les connaisseurs. État : Neuf.", img: "NaviForce12.jpeg" },
             { id: "Rolex1", titre: "Rolex Explorer", marque: "Rolex", prix: 15000, desc: "Une montre robuste pour les aventures extrêmes. État : Neuf.", img: "Rolex1.jpeg" },
             { id: "Rolex2", titre: "Rolex Datejust", marque: "Rolex", prix: 15000, desc: "Élégance intemporelle avec date intégrée. État : Neuf.", img: "Rolex2.jpeg" },
             { id: "Rolex3", titre: "Rolex Submariner", marque: "Rolex", prix: 15000, desc: "Parfaite pour la plongée avec un style luxueux. État : Neuf.", img: "Rolex3.jpeg" },
@@ -336,18 +149,37 @@
         ];
 
         const liste = document.getElementById("montreListe");
+
+        // Créer des placeholders pour les montres
         montres.forEach(montre => {
-            const div = document.createElement("div");
-            div.id = montre.id;
-            div.className = "montre";
-            div.innerHTML = `
-                <img src="${montre.img}" alt="${montre.titre} - Montre pas chère" loading="lazy">
-                <h2>${montre.titre}</h2>
-                <p>${montre.desc} Prix : ${montre.prix} FCFA</p>
-                <button class="acheter-btn" onclick="window.open('https://wa.me/2250778901319?text=Je%20veux%20acheter%20${montre.titre}%20-%20${montre.prix}%20FCFA', '_blank')">Contacter pour acheter</button>
-            `;
-            liste.appendChild(div);
+            const placeholder = document.createElement("div");
+            placeholder.id = montre.id;
+            placeholder.className = "montre";
+            placeholder.dataset.titre = montre.titre;
+            placeholder.dataset.desc = montre.desc;
+            placeholder.dataset.prix = montre.prix;
+            placeholder.dataset.img = montre.img;
+            liste.appendChild(placeholder);
         });
+
+        // Observer les placeholders pour charger les montres visibles
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const div = entry.target;
+                    div.innerHTML = `
+                        <img src="${div.dataset.img}" alt="${div.dataset.titre} - Montre pas chère" loading="lazy">
+                        <h2>${div.dataset.titre}</h2>
+                        <p>${div.dataset.desc} Prix : ${div.dataset.prix} FCFA</p>
+                        <button class="acheter-btn" onclick="window.open('https://wa.me/2250778901319?text=Je%20veux%20acheter%20${div.dataset.titre}%20-%20${div.dataset.prix}%20FCFA', '_blank')">Contacter pour acheter</button>
+                    `;
+                    div.classList.add("active");
+                    observer.unobserve(div);
+                }
+            });
+        }, { rootMargin: "100px" });
+
+        document.querySelectorAll(".montre").forEach(montre => observer.observe(montre));
 
         function filtrerMontres() {
             const marqueSelect = document.getElementById("marqueSelect").value;
@@ -370,6 +202,18 @@
             });
         }
 
+        function debounce(func, wait) {
+            let timeout;
+            return function (...args) {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => func.apply(this, args), wait);
+            };
+        }
+
+        document.getElementById("marqueSelect").onchange = debounce(filtrerMontres, 300);
+        document.getElementById("prixInput").oninput = debounce(filtrerMontres, 300);
+        document.getElementById("marqueInput").oninput = debounce(filtrerMontres, 300);
+
         function showSection(sectionId) {
             document.querySelectorAll(".section").forEach(section => {
                 section.classList.remove("active");
@@ -379,17 +223,14 @@
         }
 
         const video = document.getElementById("pubVideo");
+        document.getElementById("playPub").onclick = () => video.play();
         video.addEventListener("ended", function() {
             video.currentTime = 0;
             video.play();
         });
 
         window.addEventListener("load", function() {
-            video.play().catch(error => {
-                console.log("Autoplay bloqué :", error);
-            });
             filtrerMontres();
-            // Retirer le loader une fois la page chargée
             document.body.classList.add("loaded");
         });
     </script>
