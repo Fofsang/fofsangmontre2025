@@ -7,7 +7,7 @@
     <meta name="description" content="Montres neuves et stylées à Adjamé Black Market, dès 7000 FCFA. Commandez via WhatsApp !">
     <meta name="google-site-verification" content="G59bSIgT4eHXkH1Lr31OdcGCdBx0_Ndx0NFc4bk9UaA" />
     <style>
-        body{font-family:Arial,sans-serif;margin:0;padding:20px;background-color:#f4f4f4;text-align:center;position:relative}nav{background-color:#2c3e50;padding:10px;text-align:center}nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:700}nav a:hover{color:#ddd}.logo{position:absolute;top:10px;right:10px;z-index:10}.logo img{max-height:100px;width:auto}h1{color:#333;margin:20px 0}#accueil h1{font-size:2.5em;font-weight:700;color:#2c3e50}.filtres{margin-bottom:20px}select,input{padding:10px;font-size:1.1em;border-radius:5px;margin:0 10px;width:200px}#montreListe{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:20px}.montre{background-color:#fff;border-radius:10px;box-shadow:0 2px 4px rgba(0,0,0,.05);padding:15px;text-align:center;display:none}.montre.active,.montre:nth-child(-n+10){display:block}.montre img{max-width:50%;height:auto;border-radius:5px}h2{color:#2c3e50;font-size:1.5em;margin:10px 0}p{color:#666;margin:5px 0}.acheter-btn{background-color:#2c3e50;color:#fff;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;margin-top:10px}.acheter-btn:hover{background-color:#34495e}.section{display:none;margin-top:20px}.section.active{display:block}.contact{margin-top:30px;font-size:1.2em;color:#2c3e50;font-weight:700}.pub{max-width:200px;background-color:#fff;padding:5px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,.05);margin:10px auto;z-index:20}.pub video{width:100%;height:auto;border-radius:5px}.pub p{font-size:.8em;color:#888;margin:2px 0}.cta{font-size:1.2em;color:#2c3e50;margin:20px 0;font-weight:700}.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.8);display:flex;justify-content:center;align-items:center;z-index:1000}.loader::after{content:'';width:40px;height:40px;border:5px solid #2c3e50;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.loaded .loader{display:none}@media (max-width:768px){.logo{top:5px;right:5px}.logo img{max-height:50px}#accueil h1{font-size:1.8em}.filtres select,.filtres input{width:100%;margin:5px 0}#montreListe{grid-template-columns:1fr}.montre img{max-width:80%}.pub{max-width:150px}}
+       body{font-family:Arial,sans-serif;margin:0;padding:20px;background-color:#f4f4f4;text-align:center;position:relative}nav{background-color:#2c3e50;padding:10px;text-align:center}nav a{color:#fff;margin:0 15px;text-decoration:none;font-weight:700}nav a:hover{color:#ddd}.logo{position:absolute;top:10px;right:10px;z-index:10}.logo img{max-height:100px;width:auto}h1{color:#333;margin:20px 0}#accueil h1{font-size:2.5em;font-weight:700;color:#2c3e50}.filtres{margin-bottom:20px}select,input{padding:10px;font-size:1.1em;border-radius:5px;margin:0 10px;width:200px}#montreListe{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;padding:20px}.montre{background-color:#fff;border-radius:10px;box-shadow:0 2px 4px rgba(0,0,0,.05);padding:15px;text-align:center;display:none}.montre.active{display:block}.montre img{max-width:50%;height:auto;border-radius:5px}h2{color:#2c3e50;font-size:1.5em;margin:10px 0}p{color:#666;margin:5px 0}.acheter-btn{background-color:#2c3e50;color:#fff;padding:8px 15px;border:none;border-radius:5px;cursor:pointer;margin-top:10px}.acheter-btn:hover{background-color:#34495e}.section{display:none;margin-top:20px}.section.active{display:block}.contact{margin-top:30px;font-size:1.2em;color:#2c3e50;font-weight:700}.pub{max-width:200px;background-color:#fff;padding:5px;border-radius:5px;box-shadow:0 2px 4px rgba(0,0,0,.05);margin:10px auto;z-index:20}.pub video{width:100%;height:auto;border-radius:5px}.pub p{font-size:.8em;color:#888;margin:2px 0}.cta{font-size:1.2em;color:#2c3e50;margin:20px 0;font-weight:700}.loader{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(255,255,255,.8);display:flex;justify-content:center;align-items:center;z-index:1000}.loader::after{content:'';width:40px;height:40px;border:5px solid #2c3e50;border-top:5px solid transparent;border-radius:50%;animation:spin 1s linear infinite}@keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}.loaded .loader{display:none}@media (max-width:768px){.logo{top:5px;right:5px}.logo img{max-height:50px}#accueil h1{font-size:1.8em}.filtres select,.filtres input{width:100%;margin:5px 0}#montreListe{grid-template-columns:1fr}.montre img{max-width:80%}.pub{max-width:150px}}
     </style>
 </head>
 <body>
@@ -182,25 +182,32 @@
         document.querySelectorAll(".montre").forEach(montre => observer.observe(montre));
 
         function filtrerMontres() {
-            const marqueSelect = document.getElementById("marqueSelect").value;
-            const prixMin = parseFloat(document.getElementById("prixInput").value) || 0;
-            const marqueRecherche = document.getElementById("marqueInput").value.toLowerCase();
+    const marqueSelect = document.getElementById("marqueSelect").value;
+    const prixMin = parseFloat(document.getElementById("prixInput").value) || 0;
+    const marqueRecherche = document.getElementById("marqueInput").value.toLowerCase();
 
-            montres.forEach(montre => {
-                const div = document.getElementById(montre.id);
-                const matchMarqueSelect = !marqueSelect || montre.marque === marqueSelect;
-                const matchPrix = montre.prix >= prixMin;
-                const matchMarqueInput = marqueRecherche === "" || 
-                                        montre.marque.toLowerCase().includes(marqueRecherche) || 
-                                        montre.titre.toLowerCase().includes(marqueRecherche);
+    montres.forEach(montre => {
+        const div = document.getElementById(montre.id);
+        
+        // Filtrage par marque (marqueSelect)
+        const matchMarqueSelect = !marqueSelect || montre.marque === marqueSelect;
+        
+        // Filtrage par prix
+        const matchPrix = montre.prix >= prixMin;
+        
+        // Filtrage par recherche (marqueInput) - appliqué uniquement si les autres filtres passent
+        const matchMarqueInput = marqueRecherche === "" || 
+                                 montre.marque.toLowerCase().includes(marqueRecherche) || 
+                                 montre.titre.toLowerCase().includes(marqueRecherche);
 
-                if (matchMarqueSelect && matchPrix && matchMarqueInput) {
-                    div.classList.add("active");
-                } else {
-                    div.classList.remove("active");
-                }
-            });
+        // Une montre est affichée si elle passe tous les filtres
+        if (matchMarqueSelect && matchPrix && matchMarqueInput) {
+            div.classList.add("active");
+        } else {
+            div.classList.remove("active");
         }
+    });
+}
 
         function debounce(func, wait) {
             let timeout;
